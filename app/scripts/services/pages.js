@@ -10,13 +10,16 @@
 angular.module('passwordManagerApp')
   .service('Pages', function Pages() {
 
+    function toJSON(model) {
+      var o = {};
+      _.extend(o, model.attributes);
+      o.createdAt = model.createdAt.toString();
+      o.id = model.id;
+      return o;
+    }
+
     function listToJSON(result) {
-      return _.map(result, function (model) {
-        var o = {};
-        _.extend(o, model.attributes);
-        o.createdAt = model.createdAt.toString();
-        return o;
-      });
+      return _.map(result, toJSON);
     }
 
     var Page = Parse.Object.extend('Page');
@@ -45,5 +48,17 @@ angular.module('passwordManagerApp')
       }
 
       return query.find().then(listToJSON);
-    }
+    };
+
+
+    this.get = function (id) {
+      return new Parse.Query(Page)
+          .get(id)
+          .then(toJSON);
+    };
+
+
+    this.remove = function (page) {
+      new Page(page).destroy();
+    };
   });

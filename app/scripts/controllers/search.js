@@ -35,6 +35,15 @@ angular.module('passwordManagerApp')
       });
     };
 
+    $scope.remove = function (page) {
+      if ($scope.selectedPage === page) {
+        $scope.selectedPage = null;
+      }
+
+      $scope.pages = _.without($scope.pages, page);
+      return Pages.remove(page);
+    };
+
     $scope.search().then(function () {
       $scope.$apply(function () {
 
