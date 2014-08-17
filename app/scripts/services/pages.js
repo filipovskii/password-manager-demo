@@ -9,5 +9,10 @@
  */
 angular.module('passwordManagerApp')
   .service('Pages', function Pages() {
-    // AngularJS will instantiate a singleton by calling "new" on this function
+    var Page = Parse.Object.extend('Page');
+
+    this.add = function (page) {
+      var page = new Page(page);
+      return page.save();
+    }
   });
