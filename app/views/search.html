@@ -8,7 +8,7 @@
 
         <input type="text" class="form-control" ng-model="query">
 
-        <select ng-model="category" class="form-control"
+        <select ng-model="selectedCategory" class="form-control"
           ng-options="c for c in categories">
         </select>
 
@@ -16,8 +16,8 @@
     </form>
 
     <ul class="list-unstyled">
-      <li ng-repeat="site in sites">
-        <span ng-click="selectSite(site)">{{site.name}}</span>
+      <li ng-repeat="page in pages">
+        <span ng-click="selectPage(page)">{{page.name}}</span>
         <span class="glyphicon glyphicon-trash"></span>
         <span class="glyphicon glyphicon-pencil"></span>
       </li>
@@ -25,26 +25,26 @@
 
   </div>
 
-  <div class="col-md-6" ng-show="selectedSite">
+  <div class="col-md-6" ng-show="selectedPage">
     <h2>Details</h2>
     <ul class="list-unstyled">
       <li>
         <strong>Page:</strong>
-        {{selectedSite.name}}
+        {{selectedPage.name}}
       </li>
 
       <li>
         <strong>Category:</strong>
-        {{selectedSite.category}}
+        {{selectedPage.category}}
       </li>
 
       <li>
         <strong>Added:</strong>
-        {{selectedSite.added}}
+        {{selectedPage.createdAt}}
       </li>
 
       <li>
-        <button ui-sref="view(selectedSite.id)">
+        <button ui-sref="view(selectedPage.id)">
           <span class="glyphicon glyphicon-folder-open"></span>
         </button>
       </li>
