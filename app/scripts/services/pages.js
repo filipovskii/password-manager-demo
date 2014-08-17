@@ -15,4 +15,13 @@ angular.module('passwordManagerApp')
       var page = new Page(page);
       return page.save();
     }
+
+    this.findAll = function () {
+      var query = new Parse.Query(Page);
+      return query.find().then(function (result) {
+        return _.map(result, function (obj) {
+          return obj.attributes;
+        });
+      });
+    }
   });
