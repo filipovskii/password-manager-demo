@@ -11,9 +11,15 @@ angular.module('passwordManagerApp')
   .controller('SearchCtrl', function ($scope, Pages) {
 
     $scope.selectPage = function (page) {
-      console.log(page);
       $scope.selectedPage = page;
     };
+
+    $scope.selected = function (page) {
+      if (page === $scope.selectedPage) {
+        return 'selected';
+      }
+      return '';
+    }
 
     $scope.search = function () {
       var q;

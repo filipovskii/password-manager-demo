@@ -1,22 +1,24 @@
-<h2>{{page.name}}</h2>
+<p>{{page.name}}</p>
 
-<div class="row">
-  <div class="col-md-1">
-    <strong>Username:</strong>
-  </div>
+<div class="row text-gray">
   <div class="col-md-2">
+    Username:
+  </div>
+  <div class="col-md-10">
     {{page.username}}
   </div>
 </div>
 
 
-<div class="row">
-  <div class="col-md-1">
-    <strong>Password:</strong>
-  </div>
+<div class="row text-gray">
   <div class="col-md-2">
+    Password:
+  </div>
+  <div class="col-md-10">
     {{password()}}
   </div>
 </div>
 
-<button ng-click="showPlaintext()">Show plaintext</button>
+<p>
+  <button class="btn" ng-click="showPlaintext()">Show plaintext</button>
+</p>
