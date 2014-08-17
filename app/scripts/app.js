@@ -14,21 +14,21 @@ angular
     'ngCookies',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ui.router',
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+  .config(function ($stateProvider, $urlRouterProvider) {
+     $urlRouterProvider.otherwise("/search");
+
+    $stateProvider
+      .state('search', {
+        url: '/search',
+        templateUrl: 'views/search.html'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+      .state('add', {
+        url: '/add',
+        templateUrl: 'views/add.html'
       })
-      .otherwise({
-        redirectTo: '/'
-      });
   })
   .run(function () {
     Parse.initialize(
