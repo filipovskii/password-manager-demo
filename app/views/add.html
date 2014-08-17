@@ -1,8 +1,9 @@
 <h2>Add</h2>
 <form>
-  <input ng-model="page.category" placeholder="Category">
-  <input ng-model="page.name" placeholder="Page or app name">
-  <input ng-model="page.username" placeholder="Username">
-  <input ng-model="page.password" type="password" placeholder="Password">
+  <input class="form-control" placeholder="Category"
+    ng-model="page.category">
+  <input class="form-control" ng-model="page.name" placeholder="Page or app name">
+  <input class="form-control" ng-model="page.username" placeholder="Username">
+  <input class="form-control" ng-model="page.password" type="password" placeholder="Password">
   <button ng-click="addPage()">Add it</button>
 </form>
