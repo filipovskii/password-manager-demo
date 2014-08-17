@@ -2,6 +2,15 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 @import 'compass/css3';
 
+// bower:scss
+@import "bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
+// endbower
+
+
+
+/*
+@import 'compass/css3';
+
 @import
 '../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/variables';
 @import
@@ -16,3 +25,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 '../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/forms';
 @import
 '../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/buttons';
+@import
+'../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/glyphicons';
+*/
+

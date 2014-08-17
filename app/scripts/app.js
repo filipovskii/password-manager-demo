@@ -22,8 +22,9 @@ angular
 
     $stateProvider
       .state('search', {
-        url: '/search',
-        templateUrl: 'views/search.html'
+        url: '/search/{siteId}?query',
+        templateUrl: 'views/search.html',
+        controller: 'SearchCtrl'
       })
       .state('add', {
         url: '/add',
