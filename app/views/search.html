@@ -15,8 +15,9 @@
     </form>
 
     <ul class="list-unstyled search-results">
-      <li ng-class="selected(page)" ng-repeat="page in pages">
-        <span ng-click="selectPage(page)">{{page.name}}</span>
+      <li ng-class="selected(page)" ng-click="selectPage(page)"
+        ng-repeat="page in pages">
+        <span>{{page.name}}</span>
         <span ng-click="remove(page)"
           class="pull-right glyphicon glyphicon-trash red-hover"></span>
         <!--span class="glyphicon glyphicon-pencil"></span-->
