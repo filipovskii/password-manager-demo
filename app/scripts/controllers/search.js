@@ -9,12 +9,6 @@
  */
 angular.module('passwordManagerApp')
   .controller('SearchCtrl', function ($scope, Pages) {
-    $scope.categories = [ 'x', 'y' ];
-
-    $scope.pages = [
-      {name: 'yahoo'},
-      {name: 'google'}
-    ];
 
     $scope.selectPage = function (page) {
       $scope.selectedPage = page;
@@ -30,5 +24,18 @@ angular.module('passwordManagerApp')
         });
     };
 
-    $scope.search();
+    $scope.search().then(function () {
+      $scope.$apply(function () {
+
+        $scope.categories = _.union(
+          [''],
+          _.map($scope.pages, function (page) {
+            return page.category;
+          })
+        );
+
+        $scope.selectedCategory = $scope.categories[0];
+      });
+    });
+
   });

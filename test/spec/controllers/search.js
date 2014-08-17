@@ -53,8 +53,20 @@ describe('Controller: SearchCtrl', function () {
   });
 
 
-  it('should attach categories from ', function () {
+  it('should attach categories from first search', function () {
+    var result = [ {'category': 'Category1'}, {'category': 'Category2'} ];
+    Pages.findAll = function () {
+      return Parse.Promise.as(result);
+    }
 
+    inject(function ($controller) {
+      $controller('SearchCtrl', {
+        $scope: scope,
+        Pages: Pages
+      });
+    });
+
+    expect(scope.categories).toEqual(['Category1', 'Category2']);
   });
 
 });
