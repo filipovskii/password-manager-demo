@@ -1,26 +1,24 @@
 <div class="row">
   <div class="col-md-6">
 
-    <h2>Search Pages</h2>
+    <p>Search Pages</p>
 
-    <form class="form-inline">
-      <div class="form-group">
-
-        <input type="text" class="form-control" ng-model="query"
+    <form class="search-form">
+        <input type="text" ng-model="query"
           placeholder="Search">
 
-        <select ng-model="selectedCategory" class="form-control"
-          ng-options="c for c in categories">
-        </select>
-
-      </div>
+        <span class="select-wrap">
+          <select ng-model="selectedCategory"
+            ng-options="c for c in categories">
+          </select>
+        </span>
     </form>
 
-    <ul class="list-unstyled">
+    <ul class="list-unstyled search-results">
       <li ng-repeat="page in pages">
         <span ng-click="selectPage(page)">{{page.name}}</span>
         <span ng-click="remove(page)"
-          class="glyphicon glyphicon-trash"></span>
+          class="pull-right glyphicon glyphicon-trash"></span>
         <!--span class="glyphicon glyphicon-pencil"></span-->
       </li>
     </ul>

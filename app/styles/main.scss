@@ -2,14 +2,6 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 @import 'compass/css3';
 
-// bower:scss
-@import "bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
-// endbower
-
-
-
-/*
-@import 'compass/css3';
 
 @import
 '../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/variables';
@@ -17,14 +9,134 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 '../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins';
 @import
 '../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/normalize';
+@import '../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/glyphicons';
 @import
 '../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/grid';
 @import
 '../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/responsive-utilities';
-@import
-'../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/forms';
-@import
-'../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/buttons';
-@import
-'../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/glyphicons';
-*/
+
+
+/* Variables */
+$button-text-color: #fff;
+$button-bg-color: #5382bd;
+$header-bg-color: #f7f7f7;
+$input-bg-color: #f1f1f1;
+
+/* Layout */
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 120px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  height: 33px;
+}
+
+.container {
+  padding-top: 120px;
+  padding-bottom: 33px;
+}
+
+/* Typography */
+html {
+  font-size: 24px;
+  line-height: 1.25em;
+  font: Lato, Arial, sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+/* Blocks */
+.header {
+  background-color: $header-bg-color;
+  box-shadow: 0px 0px 5px #000;
+}
+
+.nav {
+  list-style: none;
+  padding: 0 10px;
+
+  li {
+    display: inline;
+  }
+}
+
+.search-form {
+  input {
+    width: 72%;
+  }
+
+  select {
+    width: 26%;
+  }
+}
+
+/* Elements */
+.btn {
+  display: inline-block;
+  color: $button-text-color;
+  background-color: $button-bg-color;
+  padding: 0.5em;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+input, select {
+  border: none;
+  background-color: $input-bg-color;
+  padding: 0.5em;
+  font-weight: 300;
+}
+
+.select-wrap {
+  position: relative;
+}
+
+.select-wrap select {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+.select-wrap:after {
+  position: absolute;
+  top: 0.15em;
+  right: 0.15em;
+
+  color: $button-bg-color;
+  content: "▼";
+}
+
+/* Modifiers */
+ul.list-unstyled {
+  list-style: none;
+  padding: 0;
+}
+
+.pull-right {
+  float: right;
+
+  &:after {
+    display: table;
+    content: " ";
+  }
+}
