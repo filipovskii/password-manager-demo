@@ -48,12 +48,17 @@ angular.module('passwordManagerApp')
       }
 
       return query.find().then(listToJSON);
-    }
+    };
 
 
     this.get = function (id) {
       return new Parse.Query(Page)
           .get(id)
           .then(toJSON);
-    }
+    };
+
+
+    this.remove = function (page) {
+      new Page(page).destroy();
+    };
   });
