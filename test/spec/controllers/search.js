@@ -10,14 +10,10 @@ describe('Controller: SearchCtrl', function () {
       scope;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function ($rootScope) {
     var noop = function () { return Parse.Promise.as([]); };
     scope = $rootScope.$new();
     Pages = { findAll: noop };
-    SearchCtrl = $controller('SearchCtrl', {
-      $scope: scope,
-      Pages: Pages
-    });
   }));
 
 
@@ -29,7 +25,12 @@ describe('Controller: SearchCtrl', function () {
       return Parse.Promise.as([]);
     }
 
-    scope.search();
+    inject(function ($controller) {
+      $controller('SearchCtrl', {
+        $scope: scope,
+        Pages: Pages
+      });
+    });
 
     expect(called).toBe(true);
   });
@@ -41,9 +42,19 @@ describe('Controller: SearchCtrl', function () {
       return Parse.Promise.as(expectedResult);
     }
 
-    scope.search();
+    inject(function ($controller) {
+      $controller('SearchCtrl', {
+        $scope: scope,
+        Pages: Pages
+      });
+    });
 
     expect(scope.pages).toEqual(expectedResult);
+  });
+
+
+  it('should attach categories from ', function () {
+
   });
 
 });

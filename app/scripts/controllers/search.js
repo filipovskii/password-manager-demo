@@ -21,7 +21,7 @@ angular.module('passwordManagerApp')
     };
 
     $scope.search = function () {
-      Pages
+      return Pages
         .findAll()
         .then(function (result) {
           $scope.$apply(function () {
