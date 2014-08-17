@@ -13,7 +13,7 @@ angular.module('passwordManagerApp')
     function toJSON(model) {
       var o = {};
       _.extend(o, model.attributes);
-      o.createdAt = model.createdAt.toString();
+      o.createdAt = model.createdAt.toLocaleString();
       o.id = model.id;
       return o;
     }

@@ -21,6 +21,10 @@ $button-text-color: #fff;
 $button-bg-color: #5382bd;
 $header-bg-color: #f7f7f7;
 $input-bg-color: #f1f1f1;
+$footer-bg-color: #dddddd;
+
+$gray-text-color: #919191;
+$red-text-color: #f90e0e;
 
 /* Layout */
 *, *:before, *:after {
@@ -37,6 +41,7 @@ html, body {
   left: 0;
   right: 0;
 
+  z-index: 1;
   height: 120px;
 }
 
@@ -68,11 +73,21 @@ html {
 .header {
   background-color: $header-bg-color;
   box-shadow: 0px 0px 5px #000;
+  padding: 0 10px;
+}
+
+.footer {
+  font-size: 0.75em;
+  background-color: $footer-bg-color;
+  padding: 0 10px;
+
+  p {
+    margin: 0;
+  }
 }
 
 .nav {
   list-style: none;
-  padding: 0 10px;
 
   li {
     display: inline;
@@ -89,6 +104,21 @@ html {
   }
 }
 
+.search-results {
+  li {
+    cursor: pointer;
+    border: 1px solid #fff;
+  }
+
+  li:hover, li.selected {
+    font-weight: bold;
+  }
+}
+
+.details-list li {
+  margin-bottom: 0.5em;
+}
+
 /* Elements */
 .btn {
   display: inline-block;
@@ -97,6 +127,18 @@ html {
   padding: 0.5em;
   text-decoration: none;
   font-weight: 400;
+  border: none;
+
+  transition: background-color 200ms;
+}
+
+.btn:active {
+  box-shadow: 0 0 5px #000 inset;
+  background-color: darken($button-bg-color, 10%);
+}
+
+.btn:hover {
+  background-color: darken($button-bg-color, 10%);
 }
 
 input, select {
@@ -139,4 +181,24 @@ ul.list-unstyled {
     display: table;
     content: " ";
   }
+}
+
+.text-gray {
+  color: $gray-text-color;
+}
+
+.red-hover {
+  transition: color 200ms;
+}
+
+.red-hover:hover {
+  color: $red-text-color;
+}
+
+.btn-block, .inp-block {
+  width: 100%;
+}
+
+.space-after {
+  margin-bottom: 0.3em;
 }

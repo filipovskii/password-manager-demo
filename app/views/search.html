@@ -15,10 +15,10 @@
     </form>
 
     <ul class="list-unstyled search-results">
-      <li ng-repeat="page in pages">
+      <li ng-class="selected(page)" ng-repeat="page in pages">
         <span ng-click="selectPage(page)">{{page.name}}</span>
         <span ng-click="remove(page)"
-          class="pull-right glyphicon glyphicon-trash"></span>
+          class="pull-right glyphicon glyphicon-trash red-hover"></span>
         <!--span class="glyphicon glyphicon-pencil"></span-->
       </li>
     </ul>
@@ -26,8 +26,8 @@
   </div>
 
   <div class="col-md-6" ng-show="selectedPage">
-    <h2>Details</h2>
-    <ul class="list-unstyled">
+    <p>Details</p>
+    <ul class="list-unstyled details-list">
       <li>
         <strong>Page:</strong>
         {{selectedPage.name}}
@@ -44,7 +44,8 @@
       </li>
 
       <li>
-        <button ui-sref="view({ pageId: selectedPage.id })">
+        <button class="btn btn-block"
+          ui-sref="view({ pageId: selectedPage.id })">
           <span class="glyphicon glyphicon-folder-open"></span>
         </button>
       </li>
