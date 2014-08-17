@@ -12,7 +12,10 @@ angular.module('passwordManagerApp')
 
     function listToJSON(result) {
       return _.map(result, function (model) {
-        return model.attributes;
+        var o = {};
+        _.extend(o, model.attributes);
+        o.createdAt = model.createdAt.toString();
+        return o;
       });
     }
 

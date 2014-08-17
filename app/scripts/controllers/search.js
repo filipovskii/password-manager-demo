@@ -11,6 +11,7 @@ angular.module('passwordManagerApp')
   .controller('SearchCtrl', function ($scope, Pages) {
 
     $scope.selectPage = function (page) {
+      console.log(page);
       $scope.selectedPage = page;
     };
 
