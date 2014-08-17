@@ -15,13 +15,23 @@ angular.module('passwordManagerApp')
     };
 
     $scope.search = function () {
-      return Pages
-        .findAll()
-        .then(function (result) {
-          $scope.$apply(function () {
-            $scope.pages = result;
+      var q;
+
+      if ($scope.selectedCategory || $scope.query) {
+        q = Pages
+          .find({
+            category: $scope.selectedCategory,
+            query: $scope.query
           });
+      } else {
+        q = Pages.findAll()
+      }
+
+      return q.then(function (result) {
+        $scope.$apply(function () {
+          $scope.pages = result;
         });
+      });
     };
 
     $scope.search().then(function () {
@@ -35,6 +45,9 @@ angular.module('passwordManagerApp')
         );
 
         $scope.selectedCategory = $scope.categories[0];
+
+        $scope.$watch('selectedCategory', $scope.search);
+        $scope.$watch('query', $scope.search);
       });
     });
 

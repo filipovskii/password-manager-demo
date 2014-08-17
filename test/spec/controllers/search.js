@@ -7,13 +7,21 @@ describe('Controller: SearchCtrl', function () {
 
   var SearchCtrl,
       Pages,
-      scope;
+      scope,
+      runController;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($rootScope) {
+  beforeEach(inject(function ($rootScope, $controller) {
     var noop = function () { return Parse.Promise.as([]); };
     scope = $rootScope.$new();
     Pages = { findAll: noop };
+
+    runController = function () {
+      $controller('SearchCtrl', {
+        $scope: scope,
+        Pages: Pages
+      });
+    };
   }));
 
 
@@ -25,12 +33,7 @@ describe('Controller: SearchCtrl', function () {
       return Parse.Promise.as([]);
     }
 
-    inject(function ($controller) {
-      $controller('SearchCtrl', {
-        $scope: scope,
-        Pages: Pages
-      });
-    });
+    runController();
 
     expect(called).toBe(true);
   });
@@ -42,12 +45,7 @@ describe('Controller: SearchCtrl', function () {
       return Parse.Promise.as(expectedResult);
     }
 
-    inject(function ($controller) {
-      $controller('SearchCtrl', {
-        $scope: scope,
-        Pages: Pages
-      });
-    });
+    runController();
 
     expect(scope.pages).toEqual(expectedResult);
   });
@@ -59,14 +57,26 @@ describe('Controller: SearchCtrl', function () {
       return Parse.Promise.as(result);
     }
 
-    inject(function ($controller) {
-      $controller('SearchCtrl', {
-        $scope: scope,
-        Pages: Pages
-      });
-    });
+    runController();
 
-    expect(scope.categories).toEqual(['Category1', 'Category2']);
+    expect(scope.categories).toEqual(['', 'Category1', 'Category2']);
+  });
+
+
+  it('should pass category and query to Pages if set', function () {
+    var opts;
+
+    Pages.find = function (o) {
+      opts = o;
+      return Parse.Promise.as([]);
+    };
+
+    runController();
+    scope.selectedCategory = 'cat';
+    scope.query = 'q';
+    scope.search();
+
+    expect(opts).toEqual({category: 'cat', query: 'q'});
   });
 
 });
