@@ -28,7 +28,8 @@ angular
       })
       .state('add', {
         url: '/add',
-        templateUrl: 'views/add.html'
+        templateUrl: 'views/add.html',
+        controller: 'AddCtrl'
       })
   })
   .run(function () {
