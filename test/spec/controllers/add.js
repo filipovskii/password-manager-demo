@@ -19,4 +19,10 @@ describe('Controller: AddCtrl', function () {
     });
   }));
 
+  it('Should have an empty page on init', function () {
+
+  });
+
+  it('Should call Pages.add with new page on addPage()', function () {
+  });
 });

@@ -11,8 +11,4 @@ describe('Service: Pages', function () {
     Pages = _Pages_;
   }));
 
-  it('should do something', function () {
-    expect(!!Pages).toBe(true);
-  });
-
 });
