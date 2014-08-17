@@ -8,8 +8,12 @@
  * Controller of the passwordManagerApp
  */
 angular.module('passwordManagerApp')
-  .controller('AddCtrl', function ($scope) {
+  .controller('AddCtrl', function ($scope, $state, Pages) {
+    $scope.page = {};
+
     $scope.addPage = function () {
-      console.log('AddIt called');
+      Pages.add($scope.page).then(function () {
+        $state.go('search');
+      });
     };
   });
