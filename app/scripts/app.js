@@ -22,7 +22,7 @@ angular
 
     $stateProvider
       .state('search', {
-        url: '/search/{siteId}?query',
+        url: '/search',
         templateUrl: 'views/search.html',
         controller: 'SearchCtrl'
       })
@@ -30,6 +30,11 @@ angular
         url: '/add',
         templateUrl: 'views/add.html',
         controller: 'AddCtrl'
+      })
+      .state('view', {
+        url: '/view/:pageId',
+        templateUrl: 'views/view.html',
+        controller: 'ViewCtrl'
       })
   })
   .run(function () {

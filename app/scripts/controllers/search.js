@@ -9,7 +9,6 @@
  */
 angular.module('passwordManagerApp')
   .controller('SearchCtrl', function ($scope, $stateParams) {
-    console.log('IN ctrl', $stateParams);
     $scope.categories = [ 'x', 'y' ];
     $scope.sites = [
       {name: 'yahoo'},
